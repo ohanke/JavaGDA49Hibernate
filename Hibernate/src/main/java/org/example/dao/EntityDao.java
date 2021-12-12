@@ -30,4 +30,24 @@ public class EntityDao <T>{
         sessionFactory.close();
         return entity;
     }
+
+    public void update(T entity){
+        SessionFactory sessionFactory = hibernateFactory.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.update(entity);
+        transaction.commit();
+        session.close();
+        sessionFactory.close();
+    }
+
+    public void delete(T entity){
+        SessionFactory sessionFactory = hibernateFactory.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.delete(entity);
+        transaction.commit();
+        session.close();
+        sessionFactory.close();
+    }
 }

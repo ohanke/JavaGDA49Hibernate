@@ -45,7 +45,15 @@ public class App
         genericAuthorDao.save(drugiAutor);
 
         System.out.println("Sample movie get");
-        genericMovieDao.getById(1);
+        System.out.println(genericMovieDao.getById(1));
+
+        System.out.println(drugiAutor);
+        drugiAutor.setName("ZmienioneImie");
+        genericAuthorDao.update(drugiAutor);
+        System.out.println("Po update: " + genericAuthorDao.getById(drugiAutor.getId()));
+
+        genericAuthorDao.delete(drugiAutor);
+        System.out.println("DELETE: " + genericAuthorDao.getById(drugiAutor.getId()));
 
         hibernateFactory.getSessionFactory().close();
         Thread.sleep(2000);
